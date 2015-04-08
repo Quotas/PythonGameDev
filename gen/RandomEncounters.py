@@ -1,33 +1,46 @@
 from random import randrange
+from path.path import *
+
 
 class RandomEncounter(object):
 
-    def __init__(self, act):
-        self.area = ""
-        self.night = True
-        self.act = act
+    def __init__(self):
         self.type = ""
         self.descripID = ""
         self.descrip = ""
-        self.responseActive = False
-
-    def getREncounterTypeID(self):
+        self.Active = False
+        self.pResponse = ""
+        self.posResponse = []
+        self.getNewEncounter()
+        
+        
+    def getRETypeID(self):
         typeOfEncounter = [['Puzzle_1', '1$'], [ 'Fight_1', '1#'], ['Stealth_1', '1%']]
         #TODO Add more / read from file?
         rBuffer = randrange(0, len(typeOfEncounter))
         self.type = typeOfEncounter[rBuffer][0]
         self.descripID = typeOfEncounter[rBuffer][1]
 
-    def getEncounterDescrip(self):
-        with open('L:\Users\Seamus\Desktop\GameDev2.0\gen\encounterdescrip.txt', 'r') as lBuffer:
+    def getEDescrip(self):
+        with open('/home/ubuntu/workspace/pythongame/PythonGame/gen/encounterdescrip.txt', 'r') as lBuffer:
             for line in lBuffer:
                 lineBuffer = line.split('-')
                 if lineBuffer[1] == self.descripID + '\n':
                     self.descrip = lineBuffer[0]
+                    
+    
+    def getEPR(self):
+      with open('/home/ubuntu/workspace/pythongame/PythonGame/gen/encounterdescrip.txt', 'r') as lBuffer:
+            for line in lBuffer:
+                lineBuffer = line.split('')
+                if lineBuffer[len(lineBuffer)] == self.descripID + '\n':
+                    for r in lineBuffer:
+                        self.posResponse.append(r)
+                        self.posResponse.remove(self.descripID)
+    
 
     def getNewEncounter(self):
-        self.getREncounterTypeID()
-        self.getEncounterDescrip()
+        self.getRETypeID()
+        self.getEDescrip()
+        self.encounterActive = True;
 
-    def getEncounterResponse(self):
-        self.playerResponseActive = True

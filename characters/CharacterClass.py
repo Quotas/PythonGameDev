@@ -1,3 +1,5 @@
+from random import randrange
+
 class Character(object):
 
 	def __init__(self, name, health):
@@ -5,7 +7,7 @@ class Character(object):
 
 		self.name = name
 		self.health = health
-
+  		self.stats = [randrange(0, 18), randrange(0,18), randrange(0,18), randrange(0,18), randrange(0,18), randrange(0,18)] #STR, INT, DEX, LUK, INIT, WIS
 		self.dead = False
 		self.inventory = []
 
@@ -32,10 +34,10 @@ class Character(object):
 	def removeItem(self, item):
 		for i in self.inventory:
 			if i == item:
-				self.inventory.pop([i])
-			else:
-				pass
-				#catch the error if there is no item to remove
+				try:
+					self.inventory.pop([i])
+				except Exception as e:
+					print e
 
 	def addItem(self, item):
 		self.inventory.append(item)

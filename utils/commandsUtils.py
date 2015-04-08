@@ -1,11 +1,12 @@
 from commands import *
+import re
 
 commands = {
 
-	'help' : help ,
+	'help' : help,
 	'exit' : exit,
 	'eat'  : eat,
-	'encounter' : encounter
+	'stats' : stats
 }
 
 
@@ -23,3 +24,13 @@ def isValidCMD(command):
 	if command in commands:
 		return True
 	return False
+
+def isValidInput(input, game):
+  check = re.compile('^[a-zA-Z]+$')
+  if game.encounter.encounterActive:
+    if check.match(input):
+      return True
+    else:
+      return False
+  return False
+    
