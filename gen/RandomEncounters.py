@@ -1,6 +1,4 @@
 from random import randrange
-from path.path import *
-
 
 class RandomEncounter(object):
 
@@ -22,7 +20,7 @@ class RandomEncounter(object):
         self.descripID = typeOfEncounter[rBuffer][1]
 
     def getEDescrip(self):
-        with open('/home/ubuntu/workspace/gen/encounterdescrip.txt', 'r') as lBuffer:
+        with open('gen\encounterdescrip.txt', 'r') as lBuffer:
             for line in lBuffer:
                 lineBuffer = line.split('-')
                 if lineBuffer[1] == self.descripID + '\n':
@@ -30,7 +28,7 @@ class RandomEncounter(object):
                     
     
     def getEPR(self):
-      with open('/home/ubuntu/workspace/gen/encounterresponse.txt', 'r') as lBuffer:
+      with open('gen\encounterresponse.txt', 'r') as lBuffer:
             for line in lBuffer:
                 lineBuffer = line.split('')
                 if lineBuffer[len(lineBuffer)] == self.descripID + '\n':

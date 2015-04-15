@@ -3,31 +3,34 @@ import re
 
 commands = {
 
-	'help' : help,
-	'exit' : exit,
-	'eat'  : eat,
-	'stats' : stats
+    'help': help,
+    'exit': exit,
+    'eat': eat,
+    'stats': stats
 }
 
 
 def runCMD(command, args, player):
-	commands[command](player, args)
+    commands[command](player, args)
+
 
 def getCommand(command):
-	pass
+    pass
+
 
 def setCommand(command, args):
-	commands.update({command : args})
+    commands.update({command: args})
 
 
 def isValidCMD(command):
-	if command in commands:
-		return True
-	return False
+    if command in commands:
+        return True
+    return False
+
 
 def isValidInput(input):
-  check = re.compile('^[a-zA-Z]+$')
-  if check.match(input):
-  	return True
-  return False
+    check = re.compile('^[a-zA-Z]+$')
+    if check.match(input):
+        return True
+    return False
     
