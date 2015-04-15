@@ -10,6 +10,7 @@ class Character(object):
   		self.stats = [randrange(0, 18), randrange(0,18), randrange(0,18), randrange(0,18), randrange(0,18), randrange(0,18)] #STR, INT, DEX, LUK, INIT, WIS
 		self.dead = False
 		self.inventory = []
+		self.hasresponded = False
 
 
 	def attack(self, other):

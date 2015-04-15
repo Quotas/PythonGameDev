@@ -25,12 +25,9 @@ def isValidCMD(command):
 		return True
 	return False
 
-def isValidInput(input, game):
+def isValidInput(input):
   check = re.compile('^[a-zA-Z]+$')
-  if game.encounter.encounterActive:
-    if check.match(input):
-      return True
-    else:
-      return False
+  if check.match(input):
+  	return True
   return False
     

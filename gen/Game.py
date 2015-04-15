@@ -9,21 +9,22 @@ class Game(object):
     self.player = player
     self.active = True;
     self.encounter = encounter
-    self.timer = 0
-  
+    self.needPlayerInput = False;
+    
   
   def update(self):
     
-    self.timer += 1
-    
-    if (self.timer % 50 == 0):
-      self.encounter.getNewEncounter()
     self.player.update()
+
     if self.encounter.Active:
       print "Careful traveler, " + self.encounter.descrip
-      for r in self.encounter.posResponse:
-        if r == self.encounter.pResponse:
-          self.encounter.handleEncounter()
-          self.encounter.active = False
+      self.needPlayerInput = True
+      if self.player.hasresponded:
+        for r in self.encounter.posResponse:
+          if r == self.encounter.pResponse:
+            self.encounter.handleEncounter()
+            self.encounter.active = False
+            self.player.hasresponded = False
       
-
+  def roll(self):
+    return randrange(0, 20)

@@ -5,8 +5,9 @@ def help(player, args):
 	print "test"
 	print player.name
 
-def exit(player, args):
+def exit(player, thread):
 	sys.exit("Thanks for playing")
+	
 
 def eat(player, args):
 	pass
